@@ -1,0 +1,46 @@
+<?php namespace App\Http\Controllers;
+use App\Subject;
+use App\pages;
+use DB;
+
+class WelcomeController extends Controller {
+
+	/*
+	|--------------------------------------------------------------------------
+	| Welcome Controller
+	|--------------------------------------------------------------------------
+	|
+	| This controller renders the "marketing page" for the application and
+	| is configured to only allow guests. Like most of the other sample
+	| controllers, you are free to modify or remove it as you desire.
+	|
+	*/
+
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('guest');
+	}
+
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		$subjectArray = Subject::all();
+		$subjectName = array();
+		foreach ($subjectArray as $subject){
+			array_push($subjectName, $subject->name);
+			$name = "page_".($subject->id);
+			$name = DB::table('pages')->where('sid',"=",$subject->id)->orderBy('created_at','desc')->take(2)->get();
+		}
+		return view('home')->withSubjectnames($subjectName)->withPages($name);
+	}
+
+}
