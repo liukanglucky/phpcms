@@ -9,6 +9,8 @@ use Redirect,Input,Auth;
 use App\UserOrder;
 use DB;
 use App\sysconf;
+use App\Message;
+use App\MsgUsr;
 
 class AdminHomeController extends Controller {
 
@@ -144,5 +146,82 @@ class AdminHomeController extends Controller {
 		}else{
 			return Redirect::back()->withInput()->withErrors('保存失败');
 		}
+	}
+
+
+	public function msgsend(){
+		return view('admin/msg/send');
+	}
+
+	public function msgdosend(){
+		$msg = new Message;
+		$msg_usr = new MsgUsr;
+		$msgtype  = Input::get('msgtype');
+		if(is_null($msgtype))
+			return Redirect::back()->withInput()->withErrors('msgtype is null');
+		
+		
+
+		$msg->title = Input::get('title');
+		$msg->body = Input::get('body');
+		$receiverugid = Input::get('receiverugid');
+		if(!is_null($receiverugid) && $receiverugid != '')
+			$msg->msgtype = 2;
+		else
+			$msg->msgtype = $msgtype;
+
+		if(!$msg->save()){
+			return Redirect::back()->withInput()->withErrors('msg save is null');
+		}
+		
+		$msg_usr->stat = 0;
+		$msg_usr->sender = Auth::user()->name;
+		$msg_usr->senderid = Auth::user()->id;
+		$msg_usr->msgid = $msg->id;
+		//0 系统消息  1 用户消息 2 群组消息 插入消息表 
+		if($msgtype == '0'){
+			//$receiverugid = Input::get('receiverugid');
+			if(!is_null($receiverugid) && $receiverugid != ''){
+				//usergroup
+				$receiverugid_array = explode(",", $receiverugid);
+				foreach($receiverugid_array as $r){
+					$msg_usr->ugid = $r;
+					$msg_usr->save();
+				}
+			}
+		}
+
+		if($msgtype == '1'){
+			$receiverid = Input::get('receiverid');
+			if(!is_null($receiverid) && $receiverid != '' ){
+				//usergroup
+				$receiverid_array = explode(",", $receiverid);
+				foreach($receiverid_array as $r){
+					$msg_usr->receiverid = $r;
+					$msg_usr->save();
+				}
+			}
+		}
+
+		return view('admin/msg/send');
+	}
+
+
+	public function listmsg(){
+		$msg = Message::queryMsg(Input::get('stat'),Input::get('title'))->paginate(10);
+		//var_dump($msg);exit;
+		return view('admin/msg/list')->with('msg',$msg);
+	}
+
+	public function delmsg($id){
+		$msg = Message::find($id);
+		$msg->delete();
+
+		$msg_usr = MsgUsr::where('msgid',$id)->get();
+		foreach ($msg_usr as $m){
+			$m->delete();
+		}
+
+		return Redirect('admin/msg/list');
 	}
 }

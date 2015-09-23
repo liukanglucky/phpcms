@@ -84,9 +84,9 @@
         </ol>
      </div>
     <div style="text-align:center;">
-      <h3 style="margin-left:automargin-right:auto;"> {{$page->title}}</h3>
-      <font style="margin-left:automargin-right:auto;" color="#CCCCCC">{{$page->created_at}} | </font>
-      <font style="margin-left:automargin-right:auto;" color="#CCCCCC">作者：{{$page->uname}}</font>
+      <h3 style="margin-left:auto;margin-right:auto;"> {{$page->title}}</h3>
+      <font style="margin-left:auto;margin-right:auto;" color="#CCCCCC">{{$page->created_at}} | </font>
+      <font style="margin-left:auto;margin-right:auto;" color="#CCCCCC">作者：{{$page->uname}}</font>
     </div>
     <hr>
     @if($msg != null)

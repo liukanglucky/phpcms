@@ -77,12 +77,13 @@
 			<dd class="first_dd"><a href="#">App运营商管理</a></dd>
 			<dd><a href="#">开放接口管理</a></dd>
 			<dd><a href="#">接口类型管理</a></dd>
-		</dl>
+		</dl> -->
 	
 		<dl class="cloud">
-			<dt>大数据云平台<img src="{{asset('/images/left/select_xl01.png')}}"></dt>
-			<dd class="first_dd"><a href="#">平台运营商管理</a></dd>
-		</dl> -->
+			<dt>消息管理<img src="{{asset('/images/left/select_xl01.png')}}"></dt>
+			<dd class="first_dd" onClick="gotourl('{{ URL('admin/msg/list') }}')"><a href="{{ URL('admin/msg/list') }}">消息列表</a></dd>
+			<dd class="first_dd" onClick="gotourl('{{ URL('admin/msg/send') }}')"><a href="{{ URL('admin/msg/send') }}">发消息</a></dd>
+		</dl>
 	
 		
 	

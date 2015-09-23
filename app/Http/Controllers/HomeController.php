@@ -87,4 +87,5 @@ class HomeController extends Controller {
 	public function law(){
 		return view('law');
 	}
+	
 }

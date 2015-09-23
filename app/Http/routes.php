@@ -51,6 +51,16 @@ Route::group(['prefix' => 'user', 'namespace' => 'User','middleware'=>'user'], f
 
   Route::get('lawframe', 'UserController@lawframe');
 
+  //msgcount
+  Route::get('/msgcount/{id}', 'UserController@msgCount');
+  Route::post('/msgcount/{id}', 'UserController@msgCount');
+  //msgList
+  Route::get('/msglist/{id}', 'UserController@msgList');
+  Route::post('/msglist/{id}', 'UserController@msgList');
+  //msgList
+  Route::get('/msgdetail/{id}', 'UserController@msgDetail');
+  Route::post('/msgdetail/{id}', 'UserController@msgDetail');
+
 });
 
 
@@ -65,6 +75,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'admin
   //评论管理
   Route::get('/comments/listcomments','PagesController@listcomments');
   Route::post('/comments/listcomments','PagesController@listcomments');
+  Route::get('/comments/delete/{id}','PagesController@delcomments');
+  Route::post('/comments/delete/{id}','PagesController@delcomments');
+  Route::get('/comments/pass/{id}/{para}','PagesController@pass');
+  Route::post('/comments/pass/{id}/{para}','PagesController@pass');
   //用户管理
   Route::get('users/list','UserController@listusers');
   Route::post('users/list','UserController@listusers');
@@ -92,6 +106,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'admin
   //系统配置
   Route::get('/sysconfi/index', 'AdminHomeController@sysconfIndex');
   Route::post('/sysconf/addsysconf', 'AdminHomeController@addsysconf');
+
+  //msg
+  Route::get('/msg/send', 'AdminHomeController@msgsend');
+  Route::post('/msg/send', 'AdminHomeController@msgsend');
+  Route::get('/msg/dosend', 'AdminHomeController@msgdosend');
+  Route::post('/msg/dosend', 'AdminHomeController@msgdosend');
+  Route::get('/msg/list', 'AdminHomeController@listmsg');
+  Route::post('/msg/list', 'AdminHomeController@listmsg');
+  Route::get('/msg/delete/{id}', 'AdminHomeController@delmsg');
+  Route::post('/msg/delete/{id}', 'AdminHomeController@delmsg');
 });
 
 // Route::get('loginadmin', 'AdminHomeController@index',['middleware' => 'admin', function()

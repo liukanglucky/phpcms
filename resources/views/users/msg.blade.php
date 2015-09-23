@@ -69,30 +69,65 @@
   	</div>
     
     <div id="left3"> 
-    	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    浏览历史(点击查看)
-		  </a>
-      @foreach ($orders as $order)
-	<a href="/pages/page/{{$order->pid}}" class="list-group-item">题目：{{$order->pname}}，金币：{{$order->gold}}，阅读次数：{{$order->readnum}},
-	@if ($order->status  === 1)
-    		待支付
-@elseif ($order->status === 2)
-    完成
-@else
-    开始
-@endif
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          系统消息
+        </a>
+        @foreach ($sysMsg as $um)
+          <a href="/user/msgdetail/{{$um->id}}" class="list-group-item">{{$um->title}}
+          <font style="float:right">
+            {{$um->updated_at}}
+          </font>
+        </a>
+        @endforeach
 
-	</a>
-      @endforeach
-		
-		</div>
+      </div>
 
-		<?php echo $orders->render(); ?>
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          用户组消息
+        </a>
+        @foreach ($ugMsg as $um)
+          <a href="/user/msgdetail/{{$um->id}}" class="list-group-item">{{$um->title}}
+          <font style="float:right">
+            {{$um->updated_at}}
+          </font>
+        </a>
+        @endforeach
+
+      </div>
+
+      <div class="list-group">
+        <a href="#" class="list-group-item active">
+          用户消息
+        </a>
+        <a href="#" class="list-group-item" style="background-color:#EFF4FA">
+          未读
+        </a>
+        @foreach ($userMsg as $um)
+          <a href="/user/msgdetail/{{$um->id}}" class="list-group-item">{{$um->title}}
+          <font style="float:right">
+            {{$um->updated_at}}
+          </font>
+        </a>
+        @endforeach
+
+        <a href="#" class="list-group-item" style="background-color:#EFF4FA">
+          已读
+        </a>
+        @foreach ($userMsg2 as $um)
+          <a href="/user/msgdetail/{{$um->id}}" class="list-group-item">{{$um->title}}
+          <font style="float:right">
+            {{$um->updated_at}}
+          </font>
+        </a>
+        @endforeach
+      </div>
+
     </div>
   </div>
 
- <!--  <div id='right1'>
+  <!-- <div id='right1'>
     <div class="firsttitle"></div>
   </div> -->
 </div>

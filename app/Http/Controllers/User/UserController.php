@@ -13,6 +13,8 @@ use App\OrderRecord;
 use DB;
 use Log;
 use App\UserGroup;
+use App\Message;
+use App\MsgUsr;
 
 class UserController extends Controller {
 
@@ -210,5 +212,68 @@ class UserController extends Controller {
 		echo "aa";
 		exit();
 		return view('law2');
+	}
+
+	//返回未读消息数
+	public function msgCount($id){
+		//user msg
+		$usrMsg = MsgUsr::where('receiverid',$id)->where('stat',0)->count();
+		//usergroup msg
+		//$ugMsg = MsgUsr::where('ugid',Auth::user()->ugid)->where('stat',0)->count();
+		$ugMsg  = 0;
+		//system msg
+		//$sysMsg = Message::where();
+		echo $usrMsg+$ugMsg;
+	}
+
+	//返回未读消息
+	public function msgList($id){
+		//user msg
+		$usrMsg = MsgUsr::where('receiverid',$id)->where('stat',0)->get();
+		$msg_user = array();
+		foreach ($usrMsg as $um){
+			$msg_user[] = Message::find($um->msgid);
+		}
+
+		$usrMsg2 = MsgUsr::where('receiverid',$id)->where('stat',1)->get();
+		$msg_user2 = array();
+		foreach ($usrMsg2 as $um){
+			$msg_user2[] = Message::find($um->msgid);
+		}
+
+		//usergroup msg
+		$ugMsg = MsgUsr::where('ugid',Auth::user()->ugid)->take(10)->get();
+		//var_dump($ugMsg);
+		$msg_ug = array();
+		foreach ($ugMsg as $um){
+			$msg_ug[] = Message::find($um->msgid);
+		}
+		// var_dump($msg_ug);
+		// exit;
+		//system msg
+		$sysMsg = Message::where('msgtype',0)->orderBy('updated_at','desc')->take(10)->get();
+		
+		return view('/users/msg')->with('userMsg',$msg_user)->with('userMsg2',$msg_user2)->with('ugMsg',$msg_ug)
+		->with('sysMsg',$sysMsg)->withUser(Auth::user());
+	}
+
+	public function msgDetail($id){
+		$user= Auth::user();
+		$msg = Message::find($id);
+		if($msg!=null){
+			$usrMsg = MsgUsr::where('receiverid',$user->id)->where('msgid',$id)->get();
+			if($usrMsg != null){
+				foreach($usrMsg as $temp){
+					$temp->stat =1;
+					$temp->save();
+				}
+				return view('/users/msgdetail')->with('msg',$msg)->withUser(Auth::user());
+			}else{
+				return view('msg')->with('msg','这条消息并未推送给你！不能查看');
+			}
+		}else{
+			return view('msg')->with('msg','无此消息！');
+		}
+
 	}
 }

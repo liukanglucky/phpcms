@@ -64,6 +64,7 @@
 		  <a href="/user/wealthdetail/{{$user->id}}" class="list-group-item">金币详情</a>
 		  <a href="/user/wealthadd/{{$user->id}}" class="list-group-item">金币充值</a>
 		  <a href="/user/history/{{$user->id}}" class="list-group-item">浏览历史</a>
+      <a href="/user/msglist/{{$user->id}}" class="list-group-item">消息中心</a>
 		</div>
   	</div>
     
@@ -91,8 +92,8 @@
     </div>
   </div>
 
-  <div id='right1'>
+  <!-- <div id='right1'>
     <div class="firsttitle"></div>
-  </div>
+  </div> -->
 </div>
 @endsection

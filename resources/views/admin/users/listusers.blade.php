@@ -9,6 +9,23 @@
 
         <div class="panel-body">
 
+        <form method="post" action="{{ url('admin/users/list')}}" class="form-inline">
+          <!-- <form method="post" action=""> -->
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          用户id：
+          <input  name="id"  placeholder="userid" type="text" class="form-control">
+          用户名：
+          <input  name="name"  placeholder="username" type="text" class="form-control">
+          用户等级：
+          <select name="ugname"  class="form-control" >
+            <option value=""></option>
+            @foreach( $ugs as $ug )
+            <option value="{{$ug->name}}">{{$ug->name}}</option>
+            @endforeach
+          </select>
+          <input class="btn btn-success" type="submit" name="submit" value="搜索">
+        </form>
+
         <a href="{{ URL('admin/users/create') }}" class="btn btn-lg btn-primary">新增</a>
           <table class="table">
             <tr>
@@ -26,7 +43,7 @@
               <td>{{ $user->id }}</td>
               <td>{{ $user->name }}</td>
               <td>{{ $user->email }}</td>
-              <td>{{ $user->status }}</td>
+              <td>{{ $user->ugname }}</td>
               <td>{{ $user->point }}</td>
               <td>{{ $user->gold }}</td>
               <td>

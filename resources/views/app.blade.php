@@ -317,14 +317,31 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu" style="width:50px">
-						<li ><a href="{{ url('/user/') }}">个人主页</a></li>
+						<li ><a id="self" href="{{ url('/user/') }}">个人主页</a></li>
 						<li><a href="{{ url('/auth/logout') }}">退出</a></li>
 						@if ( Auth::user()->status == 10)
 							<li><a href="{{ url('/admin') }}">后台管理</a></li>
 						@endif
 					</ul>
 				</li>
-
+				<script>
+					//读取消息
+					url = "{{URL('/user/msgcount/'.Auth::user()->id)}}";
+				    //alert(url);
+				    $.ajax({  
+				        type: "post",  
+				        url: url,  
+				        dataType: "text", 
+				        data:{"_token":"{{ csrf_token() }}"},  
+				        success: function(data){
+				        	//alert(data);
+				        	$("#self").append('<span class="badge">'+data+'</span>');
+				        } ,
+				        error : function(msg){
+				          alert("ajax error!");
+				        },
+				      });
+				</script>	
 			@endif
 			</ul>
 		</div>

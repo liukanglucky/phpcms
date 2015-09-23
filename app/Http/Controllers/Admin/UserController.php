@@ -131,7 +131,10 @@ class UserController extends Controller {
 	}
 
 	public function listusers(){
-		return view('admin/users/listusers')->withUsers(User::paginate(10));
+		$id = Input::get('id');
+		$name = Input::get('name');
+		$ugname = Input::get('ugname');
+		return view('admin/users/listusers')->withUsers(User::queryUsers($id,$name,$ugname)->paginate(10))->withUgs(UserGroup::all());
 	}
 
 

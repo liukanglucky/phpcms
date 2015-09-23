@@ -69,30 +69,19 @@
   	</div>
     
     <div id="left3"> 
-    	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    浏览历史(点击查看)
-		  </a>
-      @foreach ($orders as $order)
-	<a href="/pages/page/{{$order->pid}}" class="list-group-item">题目：{{$order->pname}}，金币：{{$order->gold}}，阅读次数：{{$order->readnum}},
-	@if ($order->status  === 1)
-    		待支付
-@elseif ($order->status === 2)
-    完成
-@else
-    开始
-@endif
+      <h3 style="margin-left:auto;margin-right:auto;"> {{$msg->title}}</h3>
+      <div id="content">
+    
+      </div>
+      <script>
+          var html = '<?php echo $msg->body ; ?>';
+          $("#content").html(html);
+    </script>
 
-	</a>
-      @endforeach
-		
-		</div>
-
-		<?php echo $orders->render(); ?>
     </div>
   </div>
 
- <!--  <div id='right1'>
+  <!-- <div id='right1'>
     <div class="firsttitle"></div>
   </div> -->
 </div>

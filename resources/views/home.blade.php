@@ -360,7 +360,7 @@ div div div.third {
 		</div>
 		<div class='third'>
 			<div class="firsttitle">
-				<strong><font color="white" class="font"><font color="white" class="font">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;&nbsp;政策</font></strong>
+				<strong><font color="white" class="font">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>&nbsp;&nbsp;政策</font></strong>
 				<a href="{{ url('/pages/list/9') }}"><img  style="position:relative;float:right;right:10px;top:5px" src="{{ asset('/images/more.gif') }}" alt="更多"></a>
 			</div>
 			@foreach ($zc as $p)

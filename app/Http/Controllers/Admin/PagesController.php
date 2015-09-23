@@ -167,8 +167,32 @@ class PagesController extends Controller {
 		$uname = Input::get('uname');
 		$state = Input::get('state');
 		//$result = comment::all();
-		
 
 		return view("admin/pages/listcomment")->withComments(comment::queryComments($pname,$uname,$state)->paginate(10));
+	}
+
+	public function delcomments($id)
+	{
+		$comment = comment::find($id);
+		$comment->delete();
+
+		return Redirect::to('admin/comments/listcomments');
+	}
+
+	public function pass($id,$para)
+	{
+		$comment = comment::find($id);
+
+		if($para == '1')
+			$comment->state = '1';
+		if($para == '2')
+			$comment->state = '-1';
+
+
+		if ($comment->save()) {
+			return Redirect::to('admin/comments/listcomments');
+		} else {
+			return Redirect::back()->withInput()->withErrors('更新失败！');
+		}
 	}
 }
