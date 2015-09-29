@@ -5,7 +5,7 @@
 
 
 /*left*/
-.leftsidebar_box{width:160px;height:auto !important;overflow:visible !important;position:absolute;left:0px;height:100% !important;background-color:#3992d0;}
+.leftsidebar_box{width:160px;height:100% !important;overflow:visible !important;position:absolute;left:0px;height:100% !important;background-color:#3992d0;}
 .line{height:2px;width:100%;background-image:url({{asset('/images/left/line_bg.png ')}});background-repeat:repeat-x;}
 .leftsidebar_box dt{padding-left:40px;padding-right:10px;background-repeat:no-repeat;background-position:10px center;color:#f5f5f5;font-size:14px;position:relative;line-height:48px;cursor:pointer;}
 .leftsidebar_box dd{background-color:#317eb4;padding-left:40px;}

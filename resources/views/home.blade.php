@@ -10,6 +10,7 @@ body {
 	height:600px;
 	margin-left:auto;
 	margin-right:auto;
+
 }
 #left1 {
 	width:690px;
@@ -143,13 +144,21 @@ div div div.third {
 #ad{
 	height: 155px;
 	position: relative;
-	top:0;
-	left:0;
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom: 15px;
 }
 #ad img{
 	max-height: 150px;
 	width: 100%;
 }
+
+#ad a img{
+	max-height: 150px;
+	width: 100%;
+}
+
 #ad .b{
 	background-color: #fff;
 	position: absolute;
@@ -162,8 +171,8 @@ div div div.third {
 	position: absolute;
 	top:0;
 	left:0;
-	background-color: #fff;
-	z-index: -1;
+	/*background-color: #fff;*/
+	/*z-index: -1;*/
 	width: 100%;
 }
 </style>
@@ -176,18 +185,19 @@ div div div.third {
 		//alert("done");
 	}
 </script>
+
 @section('content')
 
 <div id="ad">
 	<!-- 广告位 -->
-	<input type="button" value="X关闭" class="b" onClick="closead();">
+	<!-- <input type="button" value="X关闭" class="b" onClick="closead();"> -->
 	<div class="adimage">
 		@if ($ad_head != null)
-			<a href="{{ $ad_head->url }}"><img   src="{{ $ad_head->image }}" alt="" style="width:1920;height:150"></a>
+			<a href="{{ $ad_head->url }}"><img   src="{{ $ad_head->image }}" alt="" style="width:1000;height:150"></a>
 
 			<br><br>
 		@else
-			<img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1920;height:150">
+			<img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1000;height:150">
 
 		<br><br>
 		@endif
@@ -202,7 +212,7 @@ div div div.third {
 
 	<div id='left1'>
 		<div id='second' style="border:1px solid #c6c6c6;">
-			<div class="carousel slide" id="carousel-850019">
+			<!-- <div class="carousel slide" id="carousel-850019">
 				<ol class="carousel-indicators">
 					<li data-slide-to="0" data-target="#carousel-850019">
 					</li>
@@ -245,10 +255,47 @@ div div div.third {
 			    </div>
 			    @endforeach
 				</div> <a data-slide="prev" href="#carousel-850019" class="left carousel-control">‹</a> <a data-slide="next" href="#carousel-850019" class="right carousel-control">›</a>
-			</div>
+			</div> -->
 			
+			<style>
+			.ck-slide { width: 675px; height: 285px; margin: 0 auto;}
+			.ck-slide ul.ck-slide-wrapper { height: 320px;}
+			</style>
+		
+			<!-- html -->
+			<div class="ck-slide">
+				<ul class="ck-slide-wrapper">
+					
 
-
+					@foreach($twzx as $p)
+				    <li>
+	                <a href="javascript:"> <img src="{{ $p->image }}" alt="首页图片" style="height:285px;width:675px"></a>
+					</li>
+				        
+				    @endforeach
+					
+				</ul>
+				<a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
+				<div class="ck-slidebox">
+					<div class="slideWrap">
+						<ul class="dot-wrap">
+							<li class="current"><em>1</em></li>
+							<li><em>2</em></li>
+							<li><em>3</em></li>
+							<li><em>4</em></li>
+							<li><em>5</em></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<script>
+				$('.ck-slide').ckSlide({
+					autoPlay: true,//默认为不自动播放，需要时请以此设置
+					dir: 'x',//默认效果淡隐淡出，x为水平移动，y 为垂直滚动
+					interval:3000//默认间隔2000毫秒
+					
+				});
+			</script>
 		</div>
 		<div class='first'>
 			<div class="firsttitle">
@@ -397,7 +444,7 @@ div div div.third {
 			<strong><font color="white" class="font">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp;&nbsp;站内广告</font></strong>
 		
 			@if ($ad_right != null)
-				<a href="{{ $ad_right ->url }}"><img   src="{{ $ad_right ->image }}" alt=""></a>
+				<a href="{{ $ad_right ->url }}"><img   src="{{ $ad_right ->image }}" alt="ad"></a>
 			@endif
 		</div>
 	</div>
@@ -413,7 +460,7 @@ div div div.third {
 
 	<br><br>
 @else
-	<img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1920;height:150">
+	<img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1000;height:150">
 <br><br>
 @endif
 	</div>

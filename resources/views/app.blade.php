@@ -8,6 +8,7 @@
 	<title>CMS</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/slide.css') }}" rel="stylesheet">
 	<link href="{{ asset('/js/bootstrap.css') }}" rel="stylesheet">
 	<!-- Fonts -->
 	<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
@@ -22,7 +23,7 @@
 	<script type="text/javascript"  src="{{ asset('/js/jquery-1.8.3.min.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('/js/bootstrap.js')}}"></script>
 	<script type="text/javascript"  src="{{ asset('/js/jquery.floatDiv.js')}}"></script>
-	
+	<script type="text/javascript"  src="{{ asset('/js/slide.js')}}"></script>
 	
 	<style>
 		body {
@@ -30,6 +31,10 @@
 		padding:0px;
 		/*background-color:#f1f1f1;*/
 		background-color:#fff;
+		background-image: url("images/back.jpg") ;
+		background-size:100% 100%;
+		background-position: 0 105px;
+		background-repeat:no-repeat;
 		}
 		#head {
 			width:100%;
@@ -47,13 +52,13 @@
 		    background: linear-gradient(to bottom, #FEFEFE 0%,#CECECE 100%);
 		}
 		#logo {
-			width:100%;
+			width:1000px;
 			height:70px;
-			min-width: 1100px;
+			min-width: 1000px;
 			margin-left:auto;
 			margin-right:auto;
 			/*background-color:#F1F1F1;*/
-			background-color:#fff;
+			/*background-color:#fff;*/
 			margin-bottom:5px;	
 			/*float:left;*/
 		}
@@ -177,7 +182,7 @@
 			width:100%;
 			height:200px;
 			/*background-color:#F1F1F1;*/
-			background-color:#fff;
+			/*background-color:#fff;*/
 			margin-left:auto;
 			margin-right:auto;
 			clear:both;
@@ -350,7 +355,7 @@
 		<div style="position:relative;left:10px;top:10px;float:left" id="logoimage">
 			<!-- <img src=" {{asset('/images/logo.png') }}"  height="68px"> -->
 		</div>
-		<div style="float:right;position:relative;top:30px;right:150px" id="searchdiv">
+		<div style="float:right;position:relative;top:30px;right:0px" id="searchdiv">
 			<a id="searchbtn" href="javascript:void(0)" onClick="searchbtn();">
 				<span class="glyphicon glyphicon-search" aria-hidden="true"></span>查找
 			</a>

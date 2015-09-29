@@ -46,7 +46,7 @@ class HomeController extends Controller {
 		$twzx = pages::where('sid',6)->orderBy('created_at','desc')->take(3)->get();
 		if(count($twzx)>0){
 			$index = $twzx[0];
-			unset($twzx[0]);
+			//unset($twzx[0]);
 		}else{
 			$index = null;
 		}
