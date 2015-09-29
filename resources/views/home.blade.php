@@ -269,7 +269,7 @@ div div div.third {
 
 					@foreach($twzx as $p)
 				    <li>
-	                <a href="javascript:"> <img src="{{ $p->image }}" alt="首页图片" style="height:285px;width:675px"></a>
+	                <a href="pages/page/{{$p->id}}"> <img src="{{ $p->image }}" alt="首页图片" style="height:285px;width:675px"></a>
 					</li>
 				        
 				    @endforeach
