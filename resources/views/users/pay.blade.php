@@ -54,6 +54,9 @@
             支付方式：支付宝
         </div> 
         
+        <div class="alert alert-warning" role="alert" >
+            线上支付即将上线。充值请联系网站管理员刘先生:18603607456
+        </div>
         <iframe style="margin:auto,auto,auto,auto;min-height:500px" frameborder="no" width="90%" src="{{ url('lawframe') }}" scrolling="yes"></iframe>
         
         <div style="position:relative;left:20%">
@@ -66,9 +69,10 @@
           </div>
         
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            购买金币数量：<input type="text" name="name" class="form-control" required="required" style="width:200px">
+            <!-- 购买金币数量：<input type="text" name="name" class="form-control" required="required" style="width:200px"> -->
              
-            <button class="btn btn-lg btn-info">确认充值</button>
+            <!-- <button class="btn btn-lg btn-info">充值</button> -->
+
           </form>
             
         </div>

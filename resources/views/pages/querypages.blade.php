@@ -2,7 +2,7 @@
 <style>
 #main {
   width:1100px;
-  min-height:1100px;
+  min-height:600px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -15,13 +15,14 @@
   margin-left:10px;
   border:1px solid #c6c6c6;
   position:relative;
-  left:80px;
+  /*left:80px;*/
 }
 #left1 {
   min-width:800px;
   width:800px;
+  height:600px;
  /* position:relative;*/
-  left:100px;
+  /*left:100px;*/
   /*height:600px;*/
   /*background-color:#FFF68F;*/
   float:left;
@@ -68,7 +69,7 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default">
 
-        <div class="panel-body">
+        <div class="panel-body" style="height:600px">
 
           <form method="post" action="{{ url('pages/list')}}" style="width:300px;margin:auto auto auto auto">
             <h3>高级搜索</h3>

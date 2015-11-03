@@ -14,30 +14,32 @@ body {
 }
 #left1 {
 	width:690px;
-	height:600px;
+	height:590px;
 	/*background-color:#FFF68F;*/
 	float:left;
 }
 div div div.first {
 	width:330px;
-	height:310px;
+	height:300px;
 	border:0px solid #000;
 	float:left;
 	margin-left:6.5px;
 	margin-right:6.5px;
-	margin-top:5px;
+	margin-top:20px;
 	margin-bottom:10px;
 	border:1px solid #c6c6c6;
 	background-color: #fff;
 }
 
 .firsttitle {
+	position: relative;
 	width:100%;
-	height:30px;
-	background-image:url("{{ asset('/images/slc_23.gif') }}");
-	background-position: 0,0;
-	background-repeat: no-repeat;
-	/*background-color:#D9D9D9;*/
+	height:35px;
+	top:-17px;
+	background-image:url("{{ asset('/images/right_title_bg.gif') }}");
+	background-size:100% 100%;
+	background-position: 0 0px;
+	background-repeat:no-repeat;
 	margin-left:auto;
 	margin-right:auto;
 	margin-bottom:0px;
@@ -62,7 +64,7 @@ div div div.first {
 }
 #right1 {
 	width:300px;
-	height:600px;
+	height:590px;
 	/*background-color:#FFBBFF;*/
 	float:left;
 	margin-left:10px;
@@ -81,13 +83,13 @@ div div div.first {
 	height:880px;
 	/*background-color:#9AFF9A;*/
 	float:left;
-	margin-top:10px;
+	margin-top:15px;
 	margin-bottom:10px;
 	
 }
 #right2 {
 	width:300px;
-	height:870px;
+	height:850px;
 	/*background-color:#F08080;*/
 	float:left;
 	margin-left:10px;
@@ -112,10 +114,11 @@ div div div.third {
 
 .font{
 	position: relative;
-	top:3px;
+	left:5px;
+	top:8px;
 	font-size:14px;
 	vertical-align: middle;
-	color:#303030;
+	color:white;
 	font-family:"微软雅黑";
 }
 
@@ -197,7 +200,7 @@ div div div.third {
 
 			<br><br>
 		@else
-			<img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1000;height:150">
+			<embed   src="{{ asset('/images/index.swf') }}" alt="" style="width:1000;height:150"></embed>
 
 		<br><br>
 		@endif
@@ -442,9 +445,11 @@ div div div.third {
 	<div id='right2'>
 		<div class="firsttitle">
 			<strong><font color="white" class="font">&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp;&nbsp;站内广告</font></strong>
-		
+			<br><br>
 			@if ($ad_right != null)
 				<a href="{{ $ad_right ->url }}"><img   src="{{ $ad_right ->image }}" alt="ad"></a>
+			@else
+				<img src="{{asset('/images/adzs.gif') }}" alt="" style="width:100%">
 			@endif
 		</div>
 	</div>
@@ -460,7 +465,7 @@ div div div.third {
 
 	<br><br>
 @else
-	<img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1000;height:150">
+	<embed   src="{{ asset('/images/index.swf') }}" alt="" style="width:1000;height:150"></embed>
 <br><br>
 @endif
 	</div>

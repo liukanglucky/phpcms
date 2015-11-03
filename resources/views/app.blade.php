@@ -10,6 +10,7 @@
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/slide.css') }}" rel="stylesheet">
 	<link href="{{ asset('/js/bootstrap.css') }}" rel="stylesheet">
+	<link rel="shortcut icon" href="{{ asset('/images/bitbug_favicon.ico') }}" />
 	<!-- Fonts -->
 	<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
 
@@ -31,9 +32,9 @@
 		padding:0px;
 		/*background-color:#f1f1f1;*/
 		background-color:#fff;
-		background-image: url("images/back.jpg") ;
+		background-image: url({{asset('/images/bg.jpg') }}) ;
 		background-size:100% 100%;
-		background-position: 0 105px;
+		background-position: 0 0px;
 		background-repeat:no-repeat;
 		}
 		#head {
@@ -65,13 +66,17 @@
 		#amenu {
 			width:100%;
 			height:50px;
-			min-width: 1100px;
+			width: 1050px;
 			margin-left:auto;
 			margin-right:auto;
 			margin-bottom:5px;	
 			/*background-color: #015579;*/
 			/*background-color:#F54343;*/
-			background-color:#086ACD;
+			/*background-color:#086ACD;*/
+			background-image: url("{{asset('/images/menu_bg.png') }}");
+			background-size:100% 100%;
+			background-position: 0 0px;
+			background-repeat:no-repeat;
 		}
 		*{margin:0;padding:0;list-style-type:none;}
 		a,img{border:0;}
@@ -91,7 +96,7 @@
 		.menu > li{
 			/*background:#015579;*/
 			/*background: #F54343;*/
-			background-color:#086ACD;
+			/*background-color:#086ACD;*/
 			float:left;
 			position:relative;
 			transform:skewX(25deg);

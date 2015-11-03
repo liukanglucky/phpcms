@@ -2,7 +2,7 @@
 <style>
 #main {
   width:1000px;
-  min-height:1000px;
+  min-height:600px;
   margin-left:auto;
   margin-right:auto;
 }
@@ -21,31 +21,38 @@
   margin-left:10px;
   border:1px solid #c6c6c6;
   position:relative;
-  left:80px;
+  margin-top: 15px;
+  /*left:80px;*/
 }
 #left1 {
   width:750px;
-  /*height:600px;*/
-  /*background-color:#FFF68F;*/
+  min-height:600px;
+  background-color:white;
   float:left;
+  margin-top: 15px;
 }
 .firsttitle {
+  position: relative;
   width:100%;
   height:30px;
-  background-image:url("{{ asset('/images/slc_23.gif') }}");
+  background-image:url("{{ asset('/images/right_title_bg.gif') }}");
   background-position: 0,0;
+  top:-17px;
+  background-size:100% 100%;
   background-repeat: no-repeat;
   /*background-color:#D9D9D9;*/
   margin-left:auto;
   margin-right:auto;
   margin-bottom:0px;
-  background-color: #d66403;
-   /*background: -moz-linear-gradient(top, #FEFEFE 0%, #00CCFF 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(100%,#00CCFF));
-    background: -webkit-linear-gradient(top, #FEFEFE 0%,#00CCFF 100%);
-    background: -o-linear-gradient(top, #FEFEFE 0%,#00CCFF 100%);
-    background: -ms-linear-gradient(top, #FEFEFE 0%,#00CCFF 100%);
-    background: linear-gradient(to bottom, #FEFEFE 0%,#00CCFF 100%);*/
+  /*background-color: #d66403;*/
+  vertical-align:middle;
+
+ /* background: -moz-linear-gradient(top, #FEFEFE 0%, #ACACAC 90%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FEFEFE), color-stop(90%,#ACACAC));
+    background: -webkit-linear-gradient(top, #FEFEFE 0%,#ACACAC 90%);
+    background: -o-linear-gradient(top, #FEFEFE 0%,#ACACAC 90%);
+    background: -ms-linear-gradient(top, #FEFEFE 0%,#ACACAC 90%);
+    background: linear-gradient(to bottom, #FEFEFE 0%,#ACACAC 90%);*/
 }
 
 .font{
@@ -53,7 +60,7 @@
         top:3px;
         font-size:14px;
         vertical-align: middle;
-        color:black;
+        color:white;
 }
 
 .font span{
@@ -61,19 +68,27 @@
   display:none;
 }
 
+.ad{
+  width:1000px;
+  height: 155px;
+  margin-left:auto;
+  margin-right:auto;
+}
 </style>
 
 @section('content')
 <!-- 广告位 -->
+<div class="ad">
 @if ($ad_head != null)
   <a href="{{ $ad_head->url }}"><img   src="{{ $ad_head->image }}" alt=""></a>
 
   <br><br>
 @else
-  <img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1920;height:150">
+  <embed   src="{{ asset('/images/index.swf') }}" alt="" style="width:1000;height:150"></embed>
 
 <br><br>
 @endif
+</div>
 <div id="main">
   <div class="container" id="left1">
      <div  style="width:240px;margin-left:10px">
@@ -111,8 +126,11 @@
   <div id='right1'>
     <div class="firsttitle">
 	   <strong><font class="font" color="white" >&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>&nbsp;&nbsp;站内广告</font></strong>
-	  @if ($ad_right != null)
+	  <br><br>
+    @if ($ad_right != null)
     <a href="{{ $ad_right->url }}"><img   src="{{ $ad_right->image }}" alt=""></a>
+    @else
+        <img src="{{asset('/images/adzs.gif') }}" alt="" style="width:100%">
     @endif
     </div>
   </div>
@@ -142,26 +160,12 @@
       <div style="overflow:hidden;word-wrap: break-word;word-break: normal; ">
         <br>{{$c->uname}}:  {{$c->content}}<br>
         <DIV style="BORDER-TOP: #00686b 1px dashed; OVERFLOW: hidden; HEIGHT: 1px;"></DIV>
-      </displayv>
+      </div>
       @endforeach
     @endif
   </div>
   @endif
 </div>
-<br>
-
-
-
-<br><br>
-<!-- 广告位 -->
-@if ($ad_foot != null)
-  <a href="{{ $ad_foot->url }}"><img   src="{{ $ad_foot->image }}" alt=""></a>
-
-  <br><br>
-@else
-  <img   src="{{ asset('/images/nyban.jpg') }}" alt="" style="width:1920;height:150">
-
-<br><br>
 
 <script>
   function form(){
@@ -174,5 +178,19 @@
     return true;
   }
 </script>
+
+<br><br>
+<!-- 广告位 -->
+<div class="ad">
+@if ($ad_foot != null)
+  <a href="{{ $ad_foot->url }}"><img   src="{{ $ad_foot->image }}" alt=""></a>
+
+  <br><br>
+@else
+  <embed   src="{{ asset('/images/index.swf') }}" alt="" style="width:1000;height:150"></embed>
+
+<br><br>
 @endif
+</div>
+
 @endsection
